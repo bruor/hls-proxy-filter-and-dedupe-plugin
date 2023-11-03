@@ -57,4 +57,4 @@ uniqueChannels.forEach(channel => {
 });
 
 // Print the recomposed M3U8
-console.log(recomposedM3U8);
+print(recomposedM3U8);
