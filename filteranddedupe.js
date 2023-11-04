@@ -2,14 +2,14 @@
 // require('../Tools/pluginsHelper');
 
 // Define the grouptitlefilter
-let grouptitlefilter = ["africa", "albania", "arabic", "australia", "belgium", "brazil", "canada french", "caribbean", "ex-ussr", "ex-yu", "filipino", "france", "germany", "greece", "india", "israel", "italy", "latino", "macedonia", "netherlands", "nordic", "poland", "portuguese", "romania", "russia", "spain"];
+var grouptitlefilter = ["africa", "albania", "arabic", "australia", "belgium", "brazil", "canada french", "caribbean", "ex-ussr", "ex-yu", "filipino", "france", "germany", "greece", "india", "israel", "italy", "latino", "macedonia", "netherlands", "nordic", "poland", "portuguese", "romania", "russia", "spain"];
 
 // Playlist is available in m3u8 variable as Buffer object
 // Split the M3U8 content by lines
-let lines = m3u8.toString().split('\n');
+var lines = m3u8.toString().split('\n');
 
 // Initialize an array to store channel objects
-let channels = [];
+var channels = [];
 
 // Regular expression to extract channel information
 const regex = /#EXTINF:-1 tvg-id="([^"]+)" tvg-name="([^"]+)" tvg-type="([^"]+)" group-title="([^"]+)" tvg-logo="([^"]+),(.*)/;
@@ -17,7 +17,7 @@ const regex = /#EXTINF:-1 tvg-id="([^"]+)" tvg-name="([^"]+)" tvg-type="([^"]+)"
 // Loop through the lines to extract channel information
 for (var i = 0; i < lines.length; i += 2) {
   if (i + 1 < lines.length) {
-    let match = lines[i].match(regex);
+    var match = lines[i].match(regex);
     if (match) {
       let channel = {
         tvgid: match[1],
@@ -34,8 +34,8 @@ for (var i = 0; i < lines.length; i += 2) {
 }
 
 // Loop through the channels array and remove objects with matching grouptitles
-for (let i = channels.length - 1; i >= 0; i--) {
-  let channel = channels[i];
+for (var i = channels.length - 1; i >= 0; i--) {
+  var channel = channels[i];
   if (grouptitlefilter.includes(channel.grouptitle.toLowerCase())) {
     channels.splice(i, 1); // Remove the channel if the grouptitle is in the filter
   }
