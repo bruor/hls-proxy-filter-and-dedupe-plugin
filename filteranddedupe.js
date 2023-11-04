@@ -35,7 +35,7 @@ for (var i = 0; i < lines.length; i += 2) {
 
 // Loop through the channels array and remove objects with matching grouptitles
 for (let i = channels.length - 1; i >= 0; i--) {
-  const channel = channels[i];
+  let channel = channels[i];
   if (grouptitlefilter.includes(channel.grouptitle.toLowerCase())) {
     channels.splice(i, 1); // Remove the channel if the grouptitle is in the filter
   }
